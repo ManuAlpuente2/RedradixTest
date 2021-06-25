@@ -1,0 +1,127 @@
+@import "./../../styles/vars";
+
+.header {
+  background: $gradient-primary;
+  color: $color-light;
+}
+.header-container {
+  padding-top: $gap;
+  padding-bottom: $gap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo-container {
+  position: relative;
+  z-index: 3;
+}
+.header-logo {
+  display: block;
+  width: rem(160);
+}
+.header-nav_toggle {
+  position: relative;
+  width: rem(30);
+  height: rem(30);
+  padding: 0;
+  display: block;
+  z-index: 3;
+  outline: none;
+  cursor: pointer;
+  &:after {
+    content: "+";
+    font-weight: 700;
+    font-size: rem(45);
+    position: absolute;
+    top: 50%;
+    line-height: rem(23);
+    margin-top: rem(-11);
+    display: block;
+    width: rem(30);
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+}
+.header-nav_items {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: rem(52) $gap $gap;
+  max-width: rem(1280);
+  background: $gradient-primary;
+  color: $color-light;
+  text-align: right;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+.header-nav_item {
+  display: block;
+  font-size: rem(24);
+  font-weight: 700;
+  margin: rem(30) 0;
+  color: white;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $color-gray5;
+  }
+}
+
+//Estados
+.header-nav {
+  &__close {
+    .header-nav_items {
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease 0.2s;
+    }
+  }
+  &__open {
+    .header-nav_toggle {
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+    .header-nav_items {
+      pointer-events: all;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+@include media($tablet) {
+  .header-nav_toggle {
+    display: none;
+  }
+  .header-nav_items,
+  .header-nav__close .header-nav_items {
+    pointer-events: all;
+    opacity: 1;
+    visibility: visible;
+    position: static;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    margin: 0 -$gap;
+  }
+  .header-nav_item {
+    font-size: rem(18);
+    font-weight: 600;
+    margin: 0 $gap;
+  }
+}
+
+@include media($desktop) {
+  .header-logo {
+    width: rem(220);
+  }
+  .header-nav_toggle {
+    display: none;
+  }
+  .header-nav_item {
+    font-size: rem(24);
+  }
+}

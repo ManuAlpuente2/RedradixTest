@@ -1,0 +1,11 @@
+@use 'sass:math';
+
+@function rem($size) {
+  @return math.div($size, 16) + rem;
+}
+
+@mixin media($media) {
+  @media screen and (min-width: $media) {
+    @content;
+  }
+}

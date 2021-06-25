@@ -1,0 +1,30 @@
+@import "./../../styles/vars";
+
+.footer{
+  background: $color-primary-text;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  padding: rem(20) 0;
+  line-height: 1.5;
+  font-size: rem(14);
+  .col{
+    width: 100%;
+  }
+}
+@include media($desktop){
+  .footer{
+    font-size: rem(16);
+    padding: rem(30) 0;
+    .col{
+      width: auto;
+      flex:1;
+    }
+  }
+  .footer_first{
+    text-align: left;
+  }
+  .footer_second{
+    text-align: right;
+  }
+}

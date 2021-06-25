@@ -1,0 +1,27 @@
+//Funciones y variables
+@import "./styles/reset.scss";
+@import "./styles/vars";
+//Comunes
+@import "./styles/commons.scss";
+
+//Básico
+html {
+  font-size: medium;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+.App {
+  @include media($tablet) {
+    .header-container {
+      padding-top: rem(40);
+      padding-bottom: rem(80);
+    }
+    .tabs-container {
+      margin-top: rem(-40);
+    }
+  }
+}

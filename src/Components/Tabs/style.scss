@@ -1,0 +1,99 @@
+@import "./../../styles/vars";
+
+.tabs {
+  max-width: rem(1280);
+  margin: 0 auto;
+}
+.tabs-container {
+  background-color: $color-light;
+  .horizontalScroll-container {
+    &::after,
+    &::before {
+      bottom: rem(4);
+    }
+  }
+}
+.tab-selector {
+  display: flex;
+  flex-wrap: nowrap;
+  box-shadow: inset $color-gray1 0 rem(-4);
+}
+.tab {
+  padding: $gap $gap rem(15+4) $gap;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: rem(14);
+  color: $color-gray3;
+  transition: color 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+  }
+  &:not(:last-child) {
+    &:after {
+      right: 0;
+      top: $gap;
+      bottom: $gap;
+      width: rem(1);
+      background-color: $color-gray1;
+    }
+  }
+  &:before {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: rem(4);
+    transition: all 0.2s linear;
+    background: $gradient-primary;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  &:hover {
+    color: $color-primary-text;
+  }
+  &__current {
+    color: $color-primary-text;
+    &:before {
+      opacity: 1;
+      background: $gradient-primary;
+      transform: translateY(0);
+    }
+  }
+}
+.tabs-content {
+  padding: $gap;
+}
+@include media($tablet) {
+  .tabs {
+    padding: 0 $gap;
+    margin: 0 auto rem(40);
+  }
+  .tabs-container {
+    border-radius: rem(8);
+    overflow: hidden;
+    box-shadow: 0 0 rem(20) rem(10) #00000026;
+  }
+  .tab {
+    font-size: rem(18);
+    text-align: center;
+    padding: rem(25) rem(40);
+    &:not(:last-child) {
+      &:after {
+        top: rem(25);
+        bottom: rem(25);
+      }
+    }
+  }
+}
+@include media($desktop) {
+  .tabs{
+    margin: 0 auto rem(80);
+  }
+  .tab {
+    font-size: rem(20);
+    min-width: rem(90);
+  }
+}
